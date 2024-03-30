@@ -1,5 +1,9 @@
 # How to setup Icinga2
 
+## SSH into the machine you wish to host icinga2 on.
+e.g. 
+`ssh user@hostaddress`
+
 `Sudo -s`
 
 ## Debian Repository
