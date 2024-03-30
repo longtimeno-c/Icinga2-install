@@ -18,6 +18,7 @@ DIST=$(awk -F"[)(]+" '/VERSION=/ {print $2}' /etc/os-release); \
 
 ```
 
+
 `apt update`
 
 
@@ -87,10 +88,11 @@ DIST=$(awk -F"[)(]+" '/VERSION=/ {print $2}' /etc/os-release); \
  /etc/apt/sources.list.d/${DIST}-icinga.list
 ```
 
+
 `apt update`
 
 
-#### Installing Icinga DB Package
+### Installing Icinga DB Package
 
 `apt install icingadb`
 
@@ -152,9 +154,11 @@ apt install icingadb-web
 https://icinga.com/docs/icinga-db-web/latest/doc/02-Installation/Debian/#installing-icinga-db-web-package
 ```
 
+
 ## Wizard setup:
 _Notes:
 To change web settings ->
+
 `nano /etc/icingaweb2/resources.ini`_
 
 **Go to webpage:**
@@ -205,7 +209,7 @@ This part is where it can go wrong! make sure to change root password when told!
 
 `apt-get install icinga2-ido-mysql`
 
-**Use defaults and remember set password **
+**Use defaults and remember set password**
 
 `icinga2 feature enable ido-mysql`
 
@@ -220,6 +224,7 @@ This part is where it can go wrong! make sure to change root password when told!
 `ALTER USER 'root'@'localhost' IDENTIFIED BY 'PASSWORD'; flush privileges;`
 
 `Ctrl C`
+
 
 Now try validate IDO
 
@@ -276,7 +281,7 @@ command[check_ntp]=/usr/lib/nagios/plugins/chexk_ntp -H localhost
 
 **Run a test**
 
-/usr/lib/nagios/plugins/check_nrpe -H 'address' -c check_load
+`/usr/lib/nagios/plugins/check_nrpe -H 'address' -c check_load`
 
 
 
@@ -336,6 +341,8 @@ systemctl daemon-reload
 systemctl enable grafana-server.service
 systemctl start grafana-server.service
 ```
+
+**Create an influx database:**
 
 `influx`
 ```
@@ -431,6 +438,7 @@ install -d -m 0755 "${TARGET_DIR}"
 wget -q -O - "$URL" | tar xfz - -C "${TARGET_DIR}" --strip-components 1
 ```
 
+
 **Config these files:**
 
 `nano /etc/icingaweb2/modules/grafana/config.ini`
@@ -483,3 +491,7 @@ e.g. ssh, http, disk, icinga
 +  vars.grafana_graph_disable = true
 
 `systemctl restart icinga2.service`
+
+
+
+This should be all good to go!!
